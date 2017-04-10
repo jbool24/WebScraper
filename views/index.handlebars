@@ -1,31 +1,26 @@
-<div class="burger-box">
-
-    <div class="order-window">
-        <h2>Order UP!!<h2>
-        <div class="burger-list">
-          {{#if burgers}}
-
-          <ul>
-            {{#each burgers}}
-            <li>{{this.burger_name}}
-              <button type="button" data-id="{{this.id}}">Eat It!</button>
-            </li>
-            {{/each}}
-          </ul>
+<div id="articles">
+  <h1>Articles</h1>
+        <div class="article-list">
+          {{#if articles}}
+            <ul>
+              {{#each articles}}
+              <li data-id={{this._id}}>
+                <div class="list-wrap">
+                  <h3>{{this.title}}</h3>
+                  <p>{{this.date}}</p>
+                  <p>{{this.preview}}</p>
+                  <a href="{{this.link}}">See More</a>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
           {{/if}}
         </div>
-
-
-      </div>
-
-      <div class="trash-bin">
-        <h1>It was Sooo good!</h1>
-        <ul class="burgers-eaten"></ul>
-      </div>
 </div>
 
-  <form class="order-form" action="/api/burger" method="post">
-      <label for="burger">Create a burger.</label>
-      <input type="text" name="burger" placeholder="Create a burger" autofocus/>
-      <button id="submit" class="btn btn-primary" type="submit">Order!</button>
-  </form>
+<div id="notes">
+  <h1>Notes</h1>
+
+  <div id="note-box"></div>
+
+</div>

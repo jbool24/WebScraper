@@ -3,25 +3,27 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Eat-Da-Burger</title>
+    <title>Washington Square News | Notes</title>
     <!-- Bootstrap -->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/burgerStyle.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <header>
-    <img class="burger-img" src="https://openclipart.org/download/185056/cheeseburger-vector.svg">
-    <div>
-      <h1 class="welcome-banner"><i class="fa fa-cutlery">Downtown News NY</i></h1>
-      <p>Washington Square News.</p>
+  <header class="container">
+    <div class="jumbotron">
+      <h1 class="welcome-banner"><i class="fa fa-newspaper-o"> Downtown NY News</i></h1>
+      <hr>
+      <p style="text-align: center">Washington Square News.</p>
     </div>
   </header>
 
-  <section>
-    {{{body}}}
+  <section class="container content-area">
+    <div id="wrapper">
+      {{{body}}}
+    </div>
   </section>
 
   <footer class="footer-box">
