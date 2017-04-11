@@ -8,10 +8,13 @@ const mongoose    = require("mongoose");
 const bodyParser  = require("body-parser");
 const exphbs      = require("express-handlebars");
 
+const env = process.env.NODE_ENV
+
 mongoose.Promise = Promise;
 
-// development env variables
-require('dotenv').config();
+if (env === 'development') 
+    // development env variables
+    require('dotenv').config();
 
 // Require our models
 const Article = require("./models/Articles.js");
