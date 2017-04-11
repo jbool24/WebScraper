@@ -155,8 +155,8 @@ app.post("/api/articles/:id", function(req, res) {
   });
 });
 
-
+const port = process.env.PORT;
 // Listen on port 3000
-app.listen(3000, function() {
+app.listen(port, function() {
   console.log("App running on port 3000!");
 });
