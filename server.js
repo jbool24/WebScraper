@@ -7,25 +7,23 @@ const cheerio     = require("cheerio");
 const mongoose    = require("mongoose");
 const bodyParser  = require("body-parser");
 const exphbs      = require("express-handlebars");
-// Set mongoose to built in JavaScript ES6 Promises
+
 mongoose.Promise = Promise;
 
 // development env variables
 require('dotenv').config();
 
-// Require our userModel model
+// Require our models
 const Article = require("./models/Articles.js");
 const Note = require("./models/Notes.js")
 
 // Initialize Express
 const app = express();
 
-
-// Use morgan and body parser with our app
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Make public a static dir
+// server public directory
 app.use(express.static("public"));
 
 // Template engine setup : Handlebars
@@ -33,7 +31,9 @@ app.engine("handlebars", exphbs({ defaultLayout: "main", layoutsDir: "./views/la
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "./views"))
 
-// Database configuration with mongoose
+/****************************************
+ Database configuration with mongoose
+ ****************************************/
 const conStr = process.env.NODE_ENV === "development"
     ? process.env.MONGO_URI
     : process.env.MONGODB_URI
@@ -41,16 +41,14 @@ const conStr = process.env.NODE_ENV === "development"
 mongoose.connect(conStr);
 const db = mongoose.connection;
 
-// Show any mongoose errors
 db.on("error", function(error) {
   console.log("Mongoose Error: ", error);
 });
 
-// Once logged in to the db through mongoose, log a success message
 db.once("open", function() {
   console.log(`Mongoose connected on port ${db.port}.`);
 });
-
+//------------------------------------------------------------------------------
 
 // Routes
 // ======
@@ -65,7 +63,7 @@ app.get("/", function(req,res) {
     });
 });
 
-
+// endpoint to activate scraper and store in DB
 app.get("/scrape-it", function(req, res) {
 
   request("https://www.nyunews.com/category/arts/", function(error, response, html) {
@@ -104,7 +102,7 @@ app.get("/scrape-it", function(req, res) {
 
 });
 
-// This will get the articles we scraped from the mongoDB
+// Get all articles
 app.get("/api/articles", function(req, res) {
 
   Article.find({}, function(error, doc) {
@@ -117,7 +115,7 @@ app.get("/api/articles", function(req, res) {
   });
 });
 
-// Grab an article by it's ObjectId
+// Get article by ObjectId
 app.get("/api/articles/:id", function(req, res) {
   Article.findOne({ "_id": req.params.id })
   .populate("note")
