@@ -1,0 +1,82 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: purple;
+}
+
+section.content-area {
+    flex: 1;
+}
+
+footer {
+    padding: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+ul {
+    text-decoration: none;
+}
+
+.jumbotron {
+  max-width: 1300px;
+}
+
+#wrapper {
+    display: flex;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5%;
+    background-color: #fefefe;
+}
+
+#articles {
+  width: 75%;
+  margin-right: 20px;
+}
+
+#articles .article-list {
+    display: inline-block;
+    overflow: auto;
+    height: 900px;
+}
+
+#articles .article-list p, a {
+    font-size: 16px;
+}
+
+#notes {
+    width: 35%;
+}
+
+#notes h1 {
+  padding: 0 10px;
+  text-align: center;
+}
+
+li {
+    display: flex
+}
+
+li button {
+    max-height: 35px;
+}
+
+textarea, input {
+    display: block;
+    width: 100%;
+    background-color: #eee;
+}
+
+input {
+    height: 36px;
+    font-size: 24px;
+}
+
+textarea {
+    height: 200px;
+    font-size: 18px;
+    margin: 8px 0;
+}
